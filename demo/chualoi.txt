@@ -1,0 +1,5 @@
+Chua loi:
+- trong wp-content phai co thu muc uploads
+- tai file wp_config.php truoc "require_once ABSPATH . 'wp-settings.php';" them doan code sau
++ define( 'FS_METHOD', 'direct' );
+define( 'UPLOADS', 'wp-content/uploads' );
