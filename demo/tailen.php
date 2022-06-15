@@ -12,13 +12,12 @@ function insert_data_table(){
 	$image_name = $image['url'];
 	$image_path = strstr($image_name, 2022);
 	if ( $image ) {           
-		echo '<img src="'."http://localhost/wordpress/wp-content/uploads/".$image_path.'">';
+		echo '<img src="'.$image_name.'">';
 		echo "File is successfully uploaded.\n";
 		echo "$image_path";
 	} else {
 		echo "Possible file upload error!\n";
 	}
-	function insert_data(){
 	$table_name = $wpdb->prefix . "upload_images";
 	$wpdb->insert(
 			$table_name,
@@ -26,11 +25,7 @@ function insert_data_table(){
 			'images'      => $image_path
 			), '%s'
 		);
-		}
-	function display_data(){
-		
 	}
-}
 }
 ?>
 <form id="file_upload" method="post" action="#" enctype="multipart/form-data">
@@ -50,8 +45,8 @@ $array = json_decode(json_encode($result), true);
 
 foreach ( $array as $key => $value )
 {
-	$create_image = '<img src="'."http://localhost/wordpress/wp-content/uploads/".$value['images'].'">';
+	$url = home_url('wp-content/uploads/'.$value['images']);
+	$create_image = '<img src="'.$url.'">';
 	echo $create_image;
-// print_r($value['images'])."<br>";
 }
 ?>
